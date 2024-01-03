@@ -23,11 +23,11 @@ function App() {
 
   const removeHandler = (targetId) => setTodos(todos.filter((todo) => todo.id !== targetId));
 
-  const statusChangeHandler = (target) => {
-    setTodos([
-      ...todos.filter((todo) => todo.id !== target.id),
-      { id: target.id, title: target.title, body: target.body, isDone: !target.isDone },
-    ]);
+  const statusChangeHandler = (targetId) => {
+    const findIdx = todos.findIndex((todo) => todo.id === targetId);
+    const copiedTodos = [...todos];
+    copiedTodos[findIdx].isDone = !copiedTodos[findIdx].isDone;
+    setTodos(copiedTodos);
   };
 
   return (

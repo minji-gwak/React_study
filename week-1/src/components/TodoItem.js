@@ -16,7 +16,7 @@ function TodoItem({ todos, doneStatus, removeHandler, statusChangeHandler }) {
               <button className="todo-delete-button button" onClick={() => removeHandler(todo.id)}>
                 삭제하기
               </button>
-              <button className="todo-complete-button button" onClick={() => statusChangeHandler(todo)}>
+              <button className="todo-complete-button button" onClick={() => statusChangeHandler(todo.id)}>
                 {todo.isDone ? '취소' : '완료'}
               </button>
             </div>
