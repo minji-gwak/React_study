@@ -3,7 +3,7 @@ import { useState } from 'react';
 import TodoList from './components/TodoList';
 import TodoInput from './components/TodoInput';
 
-function App() {
+export default function App() {
   const [titleVal, setTitleVal] = useState('');
   const [bodyVal, setBodyVal] = useState('');
   const [todos, setTodos] = useState([
@@ -47,4 +47,3 @@ function App() {
     </div>
   );
 }
-export default App;

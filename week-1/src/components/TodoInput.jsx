@@ -1,7 +1,7 @@
 import React from 'react';
 import '../style/TodoInput.css';
 
-function TodoInput({ titleVal, bodyVal, titleChangeHandler, bodyChangeHandler, submitHandler }) {
+export default function TodoInput({ titleVal, bodyVal, titleChangeHandler, bodyChangeHandler, submitHandler }) {
   return (
     <div className="input-container">
       <div className="input-group">
@@ -22,5 +22,3 @@ function TodoInput({ titleVal, bodyVal, titleChangeHandler, bodyChangeHandler, s
     </div>
   );
 }
-
-export default TodoInput;

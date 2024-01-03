@@ -2,7 +2,7 @@ import React from 'react';
 import TodoItem from './TodoItem';
 import '../style/TodoList.css';
 
-function TodoList({ todos, removeHandler, statusChangeHandler }) {
+export default function TodoList({ todos, removeHandler, statusChangeHandler }) {
   return (
     <div className="list-container">
       <h2 className="list-title">Working.. 🔥</h2>
@@ -22,5 +22,3 @@ function TodoList({ todos, removeHandler, statusChangeHandler }) {
     </div>
   );
 }
-
-export default TodoList;
