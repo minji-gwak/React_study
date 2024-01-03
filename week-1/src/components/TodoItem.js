@@ -1,4 +1,5 @@
 import React from 'react';
+import '../style/TodoItem.css';
 
 function TodoItem({ todos, doneStatus, removeHandler, statusChangeHandler }) {
   // 현재 진행 여부에 해당되는 리스트만 담기

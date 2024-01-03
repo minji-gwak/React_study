@@ -1,5 +1,6 @@
 import React from 'react';
 import TodoItem from './TodoItem';
+import '../style/TodoList.css';
 
 function TodoList({ todos, removeHandler, statusChangeHandler }) {
   return (

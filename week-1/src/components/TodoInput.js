@@ -1,4 +1,5 @@
 import React from 'react';
+import '../style/TodoInput.css';
 
 function TodoInput({ titleVal, bodyVal, titleChangeHandler, bodyChangeHandler, submitHandler }) {
   return (
