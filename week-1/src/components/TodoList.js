@@ -23,4 +23,4 @@ function TodoList({ todos, removeHandler, statusChangeHandler }) {
   );
 }
 
-export default React.memo(TodoList);
+export default TodoList;

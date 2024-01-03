@@ -28,4 +28,4 @@ function TodoItem({ todos, doneStatus, removeHandler, statusChangeHandler }) {
   );
 }
 
-export default React.memo(TodoItem);
+export default TodoItem;
