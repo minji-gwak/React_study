@@ -1,6 +1,6 @@
 import React from 'react';
 
-function TodoItem({ todos, doneStatus, removeHandler }) {
+function TodoItem({ todos, doneStatus, removeHandler, statusChangeHandler }) {
   // 현재 진행 여부에 해당되는 리스트만 담기
   const filteredTodos = todos.filter((todo) => todo.isDone === doneStatus);
   return (
@@ -16,7 +16,9 @@ function TodoItem({ todos, doneStatus, removeHandler }) {
               <button className="todo-delete-button button" onClick={() => removeHandler(todo.id)}>
                 삭제하기
               </button>
-              <button className="todo-complete-button button">{todo.isDone ? '취소' : '완료'}</button>
+              <button className="todo-complete-button button" onClick={() => statusChangeHandler(todo)}>
+                {todo.isDone ? '취소' : '완료'}
+              </button>
             </div>
           </div>
         );

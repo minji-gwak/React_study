@@ -13,6 +13,7 @@ function App() {
   ]);
   const titleChangeHandler = (event) => setTitleVal(event.target.value);
   const bodyChangeHandler = (event) => setBodyVal(event.target.value);
+
   const submitHandler = () => {
     setTodos([...todos, { id: todos[todos.length - 1].id + 1, title: titleVal, body: bodyVal, isDone: false }]);
 
@@ -21,6 +22,13 @@ function App() {
   };
 
   const removeHandler = (targetId) => setTodos(todos.filter((todo) => todo.id !== targetId));
+
+  const statusChangeHandler = (target) => {
+    setTodos([
+      ...todos.filter((todo) => todo.id !== target.id),
+      { id: target.id, title: target.title, body: target.body, isDone: !target.isDone },
+    ]);
+  };
 
   return (
     <div className="layout">
@@ -35,7 +43,7 @@ function App() {
         bodyChangeHandler={bodyChangeHandler}
         submitHandler={submitHandler}
       />
-      <TodoList todos={todos} removeHandler={removeHandler} />
+      <TodoList todos={todos} removeHandler={removeHandler} statusChangeHandler={statusChangeHandler} />
     </div>
   );
 }
