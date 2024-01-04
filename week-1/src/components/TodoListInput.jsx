@@ -12,7 +12,6 @@ export default function TodoInput({ todos, setTodos }) {
   const submitHandler = () => {
     todoId.current++;
     setTodos([...todos, { id: todoId.current, title: titleVal, body: bodyVal, isDone: false }]);
-    console.log(todos);
     setTitleVal('');
     setBodyVal('');
   };
