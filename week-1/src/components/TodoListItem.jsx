@@ -1,9 +1,25 @@
 import React from 'react';
-import '../style/TodoItem.css';
+import '../style/TodoListItem.css';
 
-export default function TodoItem({ todos, doneStatus, removeHandler, statusChangeHandler }) {
+export default function TodoItem({ todos, setTodos, doneStatus }) {
+  const removeHandler = (targetId) => setTodos(todos.filter((todo) => todo.id !== targetId));
+
+  const statusChangeHandler = (targetId) => {
+    // map을 이용한 state 객체 key 값 변경
+    setTodos(
+      todos.map((todo) => {
+        if (todo.id !== targetId) {
+          return todo;
+        } else {
+          return { ...todo, isDone: !todo.isDone };
+        }
+      })
+    );
+  };
+
   // 현재 진행 여부에 해당되는 리스트만 담기
   const filteredTodos = todos.filter((todo) => todo.isDone === doneStatus);
+
   return (
     <div className="list-wrapper">
       {filteredTodos.map((todo) => {
