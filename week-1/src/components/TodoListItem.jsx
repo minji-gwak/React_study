@@ -24,7 +24,7 @@ export default function TodoItem({ todos, setTodos, doneStatus }) {
     <div className="list-wrapper">
       {filteredTodos.map((todo) => {
         return (
-          <div className="todo-container" key={todo.title}>
+          <div className="todo-container" key={todo.id}>
             <div>
               <h2 className="todo-title">{todo.title}</h2>
               <div>{todo.body}</div>

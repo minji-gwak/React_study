@@ -1,17 +1,18 @@
-import React from 'react';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import '../style/TodoListInput.css';
 
 export default function TodoInput({ todos, setTodos }) {
   const [titleVal, setTitleVal] = useState('');
   const [bodyVal, setBodyVal] = useState('');
+  const todoId = useRef(todos[todos.length - 1].id);
 
   const titleChangeHandler = (event) => setTitleVal(event.target.value);
   const bodyChangeHandler = (event) => setBodyVal(event.target.value);
 
   const submitHandler = () => {
-    setTodos([...todos, { id: todos[todos.length - 1].id + 1, title: titleVal, body: bodyVal, isDone: false }]);
-
+    todoId.current++;
+    setTodos([...todos, { id: todoId.current, title: titleVal, body: bodyVal, isDone: false }]);
+    console.log(todos);
     setTitleVal('');
     setBodyVal('');
   };
