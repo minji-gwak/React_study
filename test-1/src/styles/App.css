@@ -1,0 +1,21 @@
+.layout {
+  padding: 0 20px;
+}
+.input-container {
+  display: flex;
+  justify-content: center;
+}
+.title {
+  text-align: center;
+}
+.todo-container {
+  display: flex;
+}
+.todo-box {
+  margin-right: 10px;
+  border: 1px solid green;
+  padding: 10px;
+  border-radius: 10px;
+  width: 100px;
+  height: 100px;
+}
