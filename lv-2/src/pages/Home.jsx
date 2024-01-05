@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import TodoList from '../components/TodoListLayout';
 import TodoInput from '../components/TodoListInput';
 
-function App() {
+function Home() {
   return (
     <Layout>
       <Container>
@@ -31,4 +31,4 @@ const Container = styled.div`
   padding: 0 20px;
 `;
 
-export default React.memo(App);
+export default React.memo(Home);
