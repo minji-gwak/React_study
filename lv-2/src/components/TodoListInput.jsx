@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { createTodo } from '../redux/modules/todoList';
-import '../style/TodoListInput.css';
+import styled from 'styled-components';
+import { addTodo } from '../redux/modules/todoList';
 
 function TodoListInput() {
   const dispatch = useDispatch();
@@ -16,29 +16,62 @@ function TodoListInput() {
   const submitHandler = () => {
     todoId.current++;
     const todo = { id: todoId.current, title: titleVal, body: bodyVal, isDone: false };
-    dispatch(createTodo(todo));
+    dispatch(addTodo(todo));
     setTitleVal('');
     setBodyVal('');
   };
 
+  const InputContainer = styled.div`
+    align-items: center;
+    display: flex;
+    gap: 20px;
+    background-color: #eee;
+    border-radius: 12px;
+    justify-content: space-between;
+    margin: 0 auto;
+    padding: 30px;
+  `;
+  const AddButton = styled.button`
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    height: 40px;
+    width: 50%;
+    background-color: teal;
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    font-weight: 700;
+    height: 40px;
+    width: 140px;
+  `;
+  const InputGroup = styled.div`
+    align-items: center;
+    display: flex;
+    gap: 20px;
+  `;
+  const InputLabel = styled.label`
+    font-size: 16px;
+    font-weight: 700;
+  `;
+  const AddInput = styled.input`
+    border: none;
+    border-radius: 12px;
+    height: 40px;
+    padding: 0 12px;
+    width: 240px;
+  `;
+
   return (
-    <div className="input-container">
-      <div className="input-group">
-        <label className="input-label">제목</label>
-        <input
-          type="text"
-          name="title"
-          className="add-input input-body"
-          onChange={titleChangeHandler}
-          value={titleVal}
-        />
-        <label className="input-label">내용</label>
-        <input type="text" name="body" className="add-input" onChange={bodyChangeHandler} value={bodyVal} />
-      </div>
-      <button className="add-button" onClick={submitHandler}>
-        추가하기
-      </button>
-    </div>
+    <InputContainer>
+      <InputGroup>
+        <InputLabel>제목</InputLabel>
+        <AddInput type="text" name="title" onChange={titleChangeHandler} value={titleVal} />
+        <InputLabel>내용</InputLabel>
+        <AddInput type="text" name="body" onChange={bodyChangeHandler} value={bodyVal} />
+      </InputGroup>
+      <AddButton onClick={submitHandler}>추가하기</AddButton>
+    </InputContainer>
   );
 }
 

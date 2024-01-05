@@ -1,19 +1,7 @@
-import './style/App.css';
-import React from 'react';
-import TodoList from './components/TodoListLayout';
-import TodoInput from './components/TodoListInput';
+import Router from './shared/Router';
 
 function App() {
-  return (
-    <div className="layout">
-      <div className="container">
-        <div>My Todo List</div>
-        <div>React</div>
-      </div>
-      <TodoInput />
-      <TodoList />
-    </div>
-  );
+  return <Router />;
 }
 
-export default React.memo(App);
+export default App;

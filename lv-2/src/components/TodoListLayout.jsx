@@ -1,15 +1,19 @@
 import React from 'react';
+import styled from 'styled-components';
 import TodoItem from './TodoList';
-import '../style/TodoListLayout.css';
 
 function TodoListLayout() {
+  const ListContainer = styled.div`
+    padding: 0 24px;
+  `;
+
   return (
-    <div className="list-container">
-      <h2 className="list-title">Working.. 🔥</h2>
+    <ListContainer>
+      <h2>Working.. 🔥</h2>
       <TodoItem doneStatus={false} />
-      <h2 className="list-title">Done..! 🎉</h2>
+      <h2>Done..! 🎉</h2>
       <TodoItem doneStatus={true} />
-    </div>
+    </ListContainer>
   );
 }
 
