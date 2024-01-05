@@ -1,8 +1,8 @@
 import React from 'react';
-import TodoItem from './TodoListItem';
+import TodoItem from './TodoList';
 import '../style/TodoListLayout.css';
 
-export default function TodoList({ todos, setTodos }) {
+function TodoListLayout({ todos, setTodos }) {
   return (
     <div className="list-container">
       <h2 className="list-title">Working.. 🔥</h2>
@@ -12,3 +12,5 @@ export default function TodoList({ todos, setTodos }) {
     </div>
   );
 }
+
+export default React.memo(TodoListLayout);

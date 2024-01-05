@@ -1,7 +1,7 @@
 import React from 'react';
-import '../style/TodoListItem.css';
+import '../style/TodoList.css';
 
-export default function TodoItem({ todos, setTodos, doneStatus }) {
+function TodoList({ todos, setTodos, doneStatus }) {
   const removeHandler = (targetId) => setTodos(todos.filter((todo) => todo.id !== targetId));
 
   const statusChangeHandler = (targetId) => {
@@ -43,3 +43,5 @@ export default function TodoItem({ todos, setTodos, doneStatus }) {
     </div>
   );
 }
+
+export default React.memo(TodoList);

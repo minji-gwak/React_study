@@ -1,7 +1,7 @@
-import { useState, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import '../style/TodoListInput.css';
 
-export default function TodoInput({ todos, setTodos }) {
+function TodoListInput({ todos, setTodos }) {
   const [titleVal, setTitleVal] = useState('');
   const [bodyVal, setBodyVal] = useState('');
   const todoId = useRef(todos[todos.length - 1].id);
@@ -36,3 +36,5 @@ export default function TodoInput({ todos, setTodos }) {
     </div>
   );
 }
+
+export default React.memo(TodoListInput);

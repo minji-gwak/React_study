@@ -1,9 +1,9 @@
 import './style/App.css';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import TodoList from './components/TodoListLayout';
 import TodoInput from './components/TodoListInput';
 
-export default function App() {
+function App() {
   const [todos, setTodos] = useState([
     { id: 1, title: '민지', body: '민지 행복하기', isDone: true },
     { id: 2, title: '리액트', body: '리액트 공부하기', isDone: false },
@@ -21,3 +21,5 @@ export default function App() {
     </div>
   );
 }
+
+export default React.memo(App);
