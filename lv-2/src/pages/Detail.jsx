@@ -1,12 +1,17 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
+import { getTodoById } from '../redux/modules/todoList';
 
 function Detail() {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const params = useParams();
   const todoItem = useSelector((state) => state.todoList.todoItem);
+  useEffect(() => {
+    dispatch(getTodoById(parseInt(params.id)));
+  }, []);
 
   return (
     <DetailLayout>

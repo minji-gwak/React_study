@@ -65,7 +65,7 @@ const todoList = (state = initialState, action) => {
         todos: state.todos.filter((todo) => todo.id !== action.payload),
       };
     case GET_TODO_BY_ID:
-      return { todoItem: state.todos.find(({ id }) => id === action.payload) };
+      return { todos: state.todos, todoItem: state.todos.find(({ id }) => id === action.payload) };
     default:
       return state;
   }

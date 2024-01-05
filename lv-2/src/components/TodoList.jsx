@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleStatusTodo, deleteTodo } from '../redux/modules/todoList';
-import { getTodoById } from '../redux/modules/todoList';
 
 function TodoList({ doneStatus }) {
   const dispatch = useDispatch();
@@ -17,12 +16,7 @@ function TodoList({ doneStatus }) {
       {filteredTodos.map((todo) => {
         return (
           <TodoContainer key={todo.id}>
-            <Link
-              to={`/${todo.id}`}
-              onClick={() => {
-                dispatch(getTodoById(todo.id));
-              }}
-            >
+            <Link to={`/${todo.id}`}>
               <div>상세보기</div>
             </Link>
             <div>
