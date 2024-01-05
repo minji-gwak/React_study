@@ -3,10 +3,6 @@ import styled from 'styled-components';
 import TodoItem from './TodoList';
 
 function TodoListLayout() {
-  const ListContainer = styled.div`
-    padding: 0 24px;
-  `;
-
   return (
     <ListContainer>
       <h2>Working.. 🔥</h2>
@@ -16,5 +12,9 @@ function TodoListLayout() {
     </ListContainer>
   );
 }
+
+const ListContainer = styled.div`
+  padding: 0 24px;
+`;
 
 export default React.memo(TodoListLayout);

@@ -12,39 +12,6 @@ function TodoList({ doneStatus }) {
   // // 현재 진행 여부에 해당되는 리스트만 담기
   const filteredTodos = todos.filter((todo) => todo.isDone === doneStatus);
 
-  const Button = styled.button`
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    height: 40px;
-    width: 50%;
-  `;
-
-  const ListWrapper = styled.div`
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-  `;
-  const TodoContainer = styled.div`
-    border: 4px solid teal;
-    border-radius: 12px;
-    padding: 12px 24px 24px;
-    width: 270px;
-  `;
-  const ButtonSet = styled.div`
-    display: flex;
-    gap: 10px;
-    margin-top: 24px;
-  `;
-  const TodoDeleteButton = styled(Button)`
-    background-color: #fff;
-    border: 2px solid red;
-  `;
-  const TodoCompleteButton = styled(Button)`
-    background-color: #fff;
-    border: 2px solid green;
-  `;
-
   return (
     <ListWrapper>
       {filteredTodos.map((todo) => {
@@ -74,5 +41,38 @@ function TodoList({ doneStatus }) {
     </ListWrapper>
   );
 }
+
+const Button = styled.button`
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  height: 40px;
+  width: 50%;
+`;
+
+const ListWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+`;
+const TodoContainer = styled.div`
+  border: 4px solid teal;
+  border-radius: 12px;
+  padding: 12px 24px 24px;
+  width: 270px;
+`;
+const ButtonSet = styled.div`
+  display: flex;
+  gap: 10px;
+  margin-top: 24px;
+`;
+const TodoDeleteButton = styled(Button)`
+  background-color: #fff;
+  border: 2px solid red;
+`;
+const TodoCompleteButton = styled(Button)`
+  background-color: #fff;
+  border: 2px solid green;
+`;
 
 export default React.memo(TodoList);
