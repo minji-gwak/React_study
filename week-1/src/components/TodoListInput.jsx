@@ -4,7 +4,7 @@ import '../style/TodoListInput.css';
 function TodoListInput({ todos, setTodos }) {
   const [titleVal, setTitleVal] = useState('');
   const [bodyVal, setBodyVal] = useState('');
-  const todoId = useRef(todos.length !== 0 ? todos[todos.length - 1].id : 1);
+  const todoId = useRef(todos.length !== 0 ? todos[todos.length - 1].id : 0);
 
   const titleChangeHandler = (event) => setTitleVal(event.target.value);
   const bodyChangeHandler = (event) => setBodyVal(event.target.value);
