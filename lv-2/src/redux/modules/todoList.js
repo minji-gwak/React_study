@@ -37,7 +37,7 @@ const initialState = {
     { id: 2, title: '리액트', body: '리액트 공부하기', isDone: false },
     { id: 3, title: '컴포넌트', body: '컴포넌트 스타일링 하기', isDone: false },
   ],
-  todoItem: { id: 1, title: '', body: '', isDone: true },
+  todoItem: {},
 };
 
 // 리듀서 : 'state에 변화를 일으키는' 함수
@@ -49,23 +49,23 @@ const todoList = (state = initialState, action) => {
     case ADD_TODO:
       return {
         todos: [...state.todos, action.payload],
+        todoItem: state.todoItem,
       };
     case TOGGLE_STATUS_TODO:
       return {
-        todos: state.todos.map((todo) => {
-          if (todo.id !== action.payload) {
-            return todo;
-          } else {
-            return { ...todo, isDone: !todo.isDone };
-          }
-        }),
+        todos: state.todos.map((todo) => (todo.id !== action.payload ? todo : { ...todo, isDone: !todo.isDone })),
+        todoItem: state.todoItem,
       };
     case DELETE_TODO:
       return {
         todos: state.todos.filter((todo) => todo.id !== action.payload),
+        todoItem: state.todoItem,
       };
     case GET_TODO_BY_ID:
-      return { todos: state.todos, todoItem: state.todos.find(({ id }) => id === action.payload) };
+      return {
+        todos: state.todos,
+        todoItem: state.todos.find(({ id }) => id === action.payload),
+      };
     default:
       return state;
   }
