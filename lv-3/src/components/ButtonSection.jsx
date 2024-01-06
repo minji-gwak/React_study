@@ -9,24 +9,24 @@ function ButtonSection() {
     <InputContainer>
       <h1>Button</h1>
       <BoxContainer>
-        <LargeButton $primary>
+        <LargeButton onClick={() => alert('버튼을 만들었어요.')} $primary>
           <LargeButtonText>
             Large Negative Button
-            {/* <LargeButtonIcon>
+            <Icon>
               <Primary />
-            </LargeButtonIcon> */}
+            </Icon>
           </LargeButtonText>
         </LargeButton>
         <MediumButton $primary>Medium</MediumButton>
         <SmallButton $primary>Small</SmallButton>
       </BoxContainer>
       <BoxContainer>
-        <LargeButton>
+        <LargeButton onClick={() => prompt('prompt도 사용해봤어요.')}>
           <LargeButtonText>
             Large Negative Button
-            {/* <LargeButtonIcon>
+            <Icon>
               <Negative />
-            </LargeButtonIcon> */}
+            </Icon>
           </LargeButtonText>
         </LargeButton>
         <MediumButton>Medium</MediumButton>
@@ -51,7 +51,7 @@ const LargeButtonText = styled.div`
   gap: 7px;
 `;
 
-const LargeButtonIcon = styled.div`
+const Icon = styled.div`
   display: flex;
   -webkit-box-align: center;
   align-items: center;

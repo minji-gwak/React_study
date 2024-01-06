@@ -24,6 +24,10 @@ export const LargeButton = styled.button`
   border: 3px solid ${(props) => (props.$primary ? 'rgb(85, 239, 196)' : 'rgb(250, 177, 160)')};
   background-color: ${(props) => (props.$primary ? 'rgb(255, 255, 255)' : 'rgb(255, 255, 255)')};
   font-weight: 600;
+
+  &:active {
+    background-color: rgb(238, 238, 238);
+  }
 `;
 
 export const MediumButton = styled.button`
@@ -34,6 +38,10 @@ export const MediumButton = styled.button`
   color: ${(props) => (props.$primary ? 'rgb(0, 0, 0);' : 'rgb(214, 48, 49)')};
   height: 45px;
   width: 130px;
+
+  &:active {
+    background-color: ${(props) => (props.$primary ? 'rgb(0, 184, 148)' : 'rgb(225, 112, 85)')};
+  }
 `;
 
 export const SmallButton = styled.button`
@@ -44,4 +52,8 @@ export const SmallButton = styled.button`
   color: ${(props) => (props.$primary ? 'rgb(0, 0, 0);' : 'rgb(214, 48, 49)')};
   height: 40px;
   width: 100px;
+
+  &:active {
+    background-color: ${(props) => (props.$primary ? 'rgb(0, 184, 148)' : 'rgb(225, 112, 85)')};
+  }
 `;
