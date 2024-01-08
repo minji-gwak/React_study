@@ -6,12 +6,8 @@ function SelectSection() {
   const stackList = ['리액트', '자바', '스프링', '리액트네이티브'];
   const [firstChosen, setFirstChosen] = useState(0);
   const [secondChosen, setSecondChosen] = useState(0);
-  const [firstOptionSetOn, setFirstOptionSetOn] = useState(false);
-  const [secondOptionSetOn, setSecondOptionSetOn] = useState(false);
-  const firstOptionSetOnHandler = () => setFirstOptionSetOn(!firstOptionSetOn);
-  const secondOptionSetOnHandler = () => setSecondOptionSetOn(!secondOptionSetOn);
-  const selectFirstStackHandler = (idx) => setFirstChosen(idx);
-  const selectSecondStackHandler = (idx) => setSecondChosen(idx);
+  const [firstOptionOn, setFirstOptionOn] = useState(false);
+  const [secondOptionOn, setSecondOptionOn] = useState(false);
 
   return (
     <div id="one">
@@ -19,29 +15,29 @@ function SelectSection() {
         <h1>Select</h1>
         <div style={{ display: 'flex', gap: '10px' }}>
           <div style={{ position: 'relative' }}>
-            <SelectButton onClick={firstOptionSetOnHandler}>
+            <SelectButton onClick={() => setFirstOptionOn(!firstOptionOn)}>
               <div>{stackList[firstChosen]}</div>
               <div>▼</div>
             </SelectButton>
             <ModalPortal>
-              {firstOptionSetOn && (
+              {firstOptionOn && (
                 <OverOptionSet>
                   {stackList.map((stack, idx) => (
-                    <Option onClick={() => selectFirstStackHandler(idx)}>{stack}</Option>
+                    <Option onClick={() => setFirstChosen(idx)}>{stack}</Option>
                   ))}
                 </OverOptionSet>
               )}
             </ModalPortal>
           </div>
           <div style={{ position: 'relative' }}>
-            <SelectButton onClick={secondOptionSetOnHandler}>
+            <SelectButton onClick={() => setSecondOptionOn(!secondOptionOn)}>
               <div>{stackList[secondChosen]}</div>
               <div>▼</div>
             </SelectButton>
-            {secondOptionSetOn && (
+            {secondOptionOn && (
               <OptionSet>
                 {stackList.map((stack, idx) => (
-                  <Option onClick={() => selectSecondStackHandler(idx)}>{stack}</Option>
+                  <Option onClick={() => setSecondChosen(idx)}>{stack}</Option>
                 ))}
               </OptionSet>
             )}
