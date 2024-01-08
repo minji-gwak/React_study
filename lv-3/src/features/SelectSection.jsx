@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import ModalPortal from '../components/portal/Portal';
 
@@ -8,6 +8,35 @@ function SelectSection() {
   const [secondChosen, setSecondChosen] = useState(0);
   const [firstOptionOn, setFirstOptionOn] = useState(false);
   const [secondOptionOn, setSecondOptionOn] = useState(false);
+
+  const optionClickHandler = (type, idx) => {
+    if (type === 'first') {
+      setFirstChosen(idx);
+      setFirstOptionOn((prevState) => !prevState);
+    } else if (type === 'second') {
+      setSecondChosen(idx);
+      setSecondOptionOn((prevState) => !prevState);
+    }
+  };
+
+  // Ref 디폴트값 null로 지정
+  const searchRef = useRef(null);
+
+  useEffect(() => {
+    // 특정 영역 외 클릭 시 발생하는 이벤트
+    function handleFocus(e) {
+      if (searchRef.current && !searchRef.current.contains(e.target)) {
+        setFirstOptionOn(false);
+        setSecondOptionOn(false);
+      }
+    }
+
+    // 이벤트 리스너에 handleFocus 함수 등록
+    document.addEventListener('mouseup', handleFocus);
+    return () => {
+      document.removeEventListener('mouseup', handleFocus);
+    };
+  }, [searchRef]);
 
   return (
     <div id="one">
@@ -21,9 +50,9 @@ function SelectSection() {
             </SelectButton>
             <ModalPortal>
               {firstOptionOn && (
-                <OverOptionSet>
+                <OverOptionSet ref={searchRef}>
                   {stackList.map((stack, idx) => (
-                    <Option onClick={() => setFirstChosen(idx)}>{stack}</Option>
+                    <Option onClick={() => optionClickHandler('first', idx)}>{stack}</Option>
                   ))}
                 </OverOptionSet>
               )}
@@ -35,9 +64,9 @@ function SelectSection() {
               <div>▼</div>
             </SelectButton>
             {secondOptionOn && (
-              <OptionSet>
+              <OptionSet ref={searchRef}>
                 {stackList.map((stack, idx) => (
-                  <Option onClick={() => setSecondChosen(idx)}>{stack}</Option>
+                  <Option onClick={() => optionClickHandler('second', idx)}>{stack}</Option>
                 ))}
               </OptionSet>
             )}
