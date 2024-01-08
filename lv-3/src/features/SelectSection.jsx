@@ -52,7 +52,9 @@ function SelectSection() {
               {firstOptionOn && (
                 <OverOptionSet ref={searchRef}>
                   {stackList.map((stack, idx) => (
-                    <Option onClick={() => optionClickHandler('first', idx)}>{stack}</Option>
+                    <Option key={idx} onClick={() => optionClickHandler('first', idx)}>
+                      {stack}
+                    </Option>
                   ))}
                 </OverOptionSet>
               )}
@@ -66,7 +68,9 @@ function SelectSection() {
             {secondOptionOn && (
               <OptionSet ref={searchRef}>
                 {stackList.map((stack, idx) => (
-                  <Option onClick={() => optionClickHandler('second', idx)}>{stack}</Option>
+                  <Option key={idx} onClick={() => optionClickHandler('second', idx)}>
+                    {stack}
+                  </Option>
                 ))}
               </OptionSet>
             )}
