@@ -1,7 +1,7 @@
-import ButtonContainer from './components/ButtonSection';
-import InputContainer from './components/InputSection';
-import ModalContainer from './components/ModalSection';
-import SelectContainer from './components/SelectSection';
+import ButtonContainer from './features/ButtonSection';
+import InputContainer from './features/InputSection';
+import ModalContainer from './features/ModalSection';
+import SelectContainer from './features/SelectSection';
 
 function App() {
   return (

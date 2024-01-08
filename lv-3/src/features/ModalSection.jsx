@@ -1,8 +1,8 @@
 import React from 'react';
 import { BoxContainer, LargeButton, SmallButton } from '../styles/CommonStyles';
-import ModalPortal from './Modal/Portal';
-import MediumModal from './Modal/MediumModal';
-import SmallModal from './Modal/SmallModal';
+import ModalPortal from '../components/portal/Portal';
+import MediumModal from '../components/modal/MediumModal';
+import SmallModal from '../components/modal/SmallModal';
 import { useState } from 'react';
 
 function ModalSection() {
