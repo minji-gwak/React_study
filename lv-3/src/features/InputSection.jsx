@@ -36,9 +36,9 @@ function InputSection() {
       value[0] === '0'
         ? value
             .substr(1)
-            .replace(/[\ㄱ-ㅎㅏ-ㅣ가-힣]/g, '')
+            .replace(/[^0-9]/gi, '')
             .replaceAll(',', '')
-        : value.replace(/[\ㄱ-ㅎㅏ-ㅣ가-힣]/g, '').replaceAll(',', '');
+        : value.replace(/[^0-9]/gi, '').replaceAll(',', '');
     setInfo({ name: info.name, price: str });
   };
 
