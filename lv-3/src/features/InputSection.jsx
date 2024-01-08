@@ -32,7 +32,13 @@ function InputSection() {
 
   const priceChangeHandler = (e) => {
     let { value } = e.target;
-    let str = value[0] === '0' ? value.substr(1).replaceAll(',', '') : value.replaceAll(',', '');
+    let str =
+      value[0] === '0'
+        ? value
+            .substr(1)
+            .replace(/[\ㄱ-ㅎㅏ-ㅣ가-힣]/g, '')
+            .replaceAll(',', '')
+        : value.replace(/[\ㄱ-ㅎㅏ-ㅣ가-힣]/g, '').replaceAll(',', '');
     setInfo({ name: info.name, price: str });
   };
 
