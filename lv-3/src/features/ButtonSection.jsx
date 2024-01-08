@@ -11,7 +11,7 @@ function ButtonSection() {
       <BoxContainer>
         <LargeButton onClick={() => alert('버튼을 만들었어요.')} $primary>
           <LargeButtonText>
-            Large Negative Button
+            Large Primary Button
             <Icon>
               <Primary />
             </Icon>
