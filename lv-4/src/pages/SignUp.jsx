@@ -1,7 +1,8 @@
 import React from 'react';
+import NotMemberForm from '../components/NotMemberForm';
 
-function SignUp() {
-  return <div>SignUp</div>;
-}
+const SignUp = () => {
+  return <NotMemberForm type="signup" />;
+};
 
-export default SignUp;
+export default React.memo(SignUp);
