@@ -44,7 +44,7 @@ const InputSection = () => {
   return (
     <>
       <h1>Input</h1>
-      <InputBoxContainer>
+      <BoxContainer>
         <div>
           <label>이름</label>
           <InputBox type="text" onChange={nameChangeHandler} value={info.name} />
@@ -59,12 +59,12 @@ const InputSection = () => {
           />
         </div>
         <Button type="primary" label="저장" onClick={() => alert(`{name: ${info.name}, price: ${info.price}}`)} />
-      </InputBoxContainer>
+      </BoxContainer>
     </>
   );
 };
 
-const InputBoxContainer = styled.div`
+const BoxContainer = styled.div`
   display: flex;
   flex-direction: row;
   gap: 30px;
