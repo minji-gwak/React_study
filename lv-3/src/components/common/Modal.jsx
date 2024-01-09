@@ -21,8 +21,12 @@ const Modal = ({ size = 'small', type, children, onClose }) => {
         )}
         {type === 'two' && (
           <TwoButtonBox>
-            <Button type="negative" label="닫기" onClick={onClose} />
-            <Button type="primary" label="확인" onClick={onClose} />
+            <Button type="negative" onClick={onClose}>
+              닫기
+            </Button>
+            <Button type="primary" onClick={onClose}>
+              확인
+            </Button>
           </TwoButtonBox>
         )}
       </ModalContainer>

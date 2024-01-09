@@ -14,8 +14,12 @@ const ModalSection = () => {
     <>
       <h1>Modal</h1>
       <BoxContainer>
-        <Button type="primary" label="Open Modal" onClick={mdModalHandler} />
-        <Button size="large" type="negative" label="Open Modal" onClick={smModalHandler} />
+        <Button type="primary" onClick={mdModalHandler}>
+          Open Modal
+        </Button>
+        <Button size="large" type="negative" onClick={smModalHandler}>
+          Open Modal
+        </Button>
         <ModalPortal>
           {mdModalOn && (
             <Modal size="medium" type="two" onClose={mdModalHandler}>

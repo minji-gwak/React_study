@@ -58,7 +58,9 @@ const InputSection = () => {
             value={addComma(info.price) || '0'}
           />
         </div>
-        <Button type="primary" label="저장" onClick={() => alert(`{name: ${info.name}, price: ${info.price}}`)} />
+        <Button type="primary" onClick={() => alert(`{name: ${info.name}, price: ${info.price}}`)}>
+          저장
+        </Button>
       </BoxContainer>
     </>
   );
