@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { ModalBackground, SmallButton } from '../../styles/CommonStyles';
+import { ModalBackground } from '../../styles/CommonStyles';
+import Button from '../common/Button';
 
 function MediumModal({ onClose }) {
   return (
@@ -9,10 +10,8 @@ function MediumModal({ onClose }) {
       <ModalContainer>
         <div>닫기와 확인 버튼 2개가 있고, 외부 영역을 눌러도 모달이 닫히지 않아요.</div>
         <ButtonSet>
-          <SmallButton onClick={onClose}>닫기</SmallButton>
-          <SmallButton onClick={onClose} $primary>
-            확인
-          </SmallButton>
+          <Button type="negative" label="닫기" onClick={onClose} />
+          <Button type="primary" label="확인" onClick={onClose} />
         </ButtonSet>
       </ModalContainer>
     </div>

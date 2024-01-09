@@ -1,9 +1,9 @@
-import React from 'react';
-import { BoxContainer, LargeButton, SmallButton } from '../styles/CommonStyles';
+import React, { useState } from 'react';
+import { BoxContainer } from '../styles/CommonStyles';
 import ModalPortal from '../components/portal/Portal';
-import MediumModal from '../components/modals/MediumModal';
-import SmallModal from '../components/modals/SmallModal';
-import { useState } from 'react';
+import MediumModal from '../components/common/MediumModal';
+import SmallModal from '../components/common/SmallModal';
+import Button from '../components/common/Button';
 
 function ModalSection() {
   const [smModalOn, setSmModalOn] = useState(false);
@@ -15,10 +15,8 @@ function ModalSection() {
     <>
       <h1>Modal</h1>
       <BoxContainer>
-        <SmallButton onClick={mdModalHandler} $primary>
-          Open Modal
-        </SmallButton>
-        <LargeButton onClick={smModalHandler}>Open Modal</LargeButton>
+        <Button type="primary" label="Open Modal" onClick={mdModalHandler} />
+        <Button size="large" type="negative" label="Open Modal" onClick={smModalHandler} />
         <ModalPortal>{mdModalOn && <MediumModal onClose={mdModalHandler} />}</ModalPortal>
         <ModalPortal>{smModalOn && <SmallModal onClose={smModalHandler} />}</ModalPortal>
       </BoxContainer>

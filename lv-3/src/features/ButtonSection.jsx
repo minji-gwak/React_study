@@ -1,36 +1,32 @@
 import React from 'react';
 import styled from 'styled-components';
-import { BoxContainer, LargeButton, MediumButton, SmallButton } from '../styles/CommonStyles';
-import { ReactComponent as Primary } from '../images/right-arrow.svg';
-import { ReactComponent as Negative } from '../images/warning.svg';
+import Button from '../components/common/Button';
 
 function ButtonSection() {
   return (
     <InputContainer>
       <h1>Button</h1>
       <BoxContainer>
-        <LargeButton onClick={() => alert('버튼을 만들었어요.')} $primary>
-          <LargeButtonText>
-            Large Primary Button
-            <Icon>
-              <Primary />
-            </Icon>
-          </LargeButtonText>
-        </LargeButton>
-        <MediumButton $primary>Medium</MediumButton>
-        <SmallButton $primary>Small</SmallButton>
+        <Button
+          size="large"
+          type="primary"
+          icon="arrow"
+          label="Large Primary Button"
+          onClick={() => alert('버튼을 만들었어요.')}
+        />
+        <Button size="medium" type="primary" label="Medium" />
+        <Button type="primary" label="Small" />
       </BoxContainer>
       <BoxContainer>
-        <LargeButton onClick={() => prompt('prompt도 사용해봤어요.')}>
-          <LargeButtonText>
-            Large Negative Button
-            <Icon>
-              <Negative />
-            </Icon>
-          </LargeButtonText>
-        </LargeButton>
-        <MediumButton>Medium</MediumButton>
-        <SmallButton>Small</SmallButton>
+        <Button
+          size="large"
+          type="negative"
+          icon="alert"
+          label="Large Negative Button"
+          onClick={() => prompt('prompt도 사용해봤어요.')}
+        />
+        <Button size="medium" type="negative" label="Medium" />
+        <Button type="negative" label="Small" />
       </BoxContainer>
     </InputContainer>
   );
@@ -42,20 +38,10 @@ const InputContainer = styled.div`
   gap: 10px;
 `;
 
-const LargeButtonText = styled.div`
+const BoxContainer = styled.div`
   display: flex;
-  -webkit-box-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  justify-content: center;
-  gap: 7px;
+  flex-direction: row;
+  gap: 10px;
 `;
 
-const Icon = styled.div`
-  display: flex;
-  -webkit-box-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  justify-content: center;
-`;
 export default React.memo(ButtonSection);

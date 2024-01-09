@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import { SmallButton } from '../styles/CommonStyles';
-import { useState } from 'react';
+import Button from '../components/common/Button';
 
 function InputSection() {
   const [info, setInfo] = useState({
@@ -59,9 +58,7 @@ function InputSection() {
             value={addComma(info.price) || '0'}
           />
         </div>
-        <SmallButton onClick={() => alert(`{name: ${info.name}, price: ${info.price}}`)} $primary>
-          저장
-        </SmallButton>
+        <Button type="primary" label="저장" onClick={() => alert(`{name: ${info.name}, price: ${info.price}}`)} />
       </InputBoxContainer>
     </>
   );

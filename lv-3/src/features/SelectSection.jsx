@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
-import SelectBox from '../components/select/SelextBox';
+import SelectBox from '../components/common/SelextBox';
 
 function SelectSection() {
   const stackList = ['리액트', '자바', '스프링', '리액트네이티브'];
