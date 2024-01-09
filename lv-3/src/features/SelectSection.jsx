@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
-import ModalPortal from '../components/portal/Portal';
+import SelectBox from '../components/select/SelextBox';
 
 function SelectSection() {
   const stackList = ['리액트', '자바', '스프링', '리액트네이티브'];
@@ -8,6 +8,8 @@ function SelectSection() {
   const [secondChosen, setSecondChosen] = useState(0);
   const [firstOptionOn, setFirstOptionOn] = useState(false);
   const [secondOptionOn, setSecondOptionOn] = useState(false);
+
+  const searchRef = useRef(null);
 
   const optionClickHandler = (type, idx) => {
     if (type === 'first') {
@@ -19,11 +21,17 @@ function SelectSection() {
     }
   };
 
-  // Ref 디폴트값 null로 지정
-  const searchRef = useRef(null);
+  const toggleFirstOption = () => {
+    setFirstOptionOn((prevState) => !prevState);
+    setSecondOptionOn(false);
+  };
+
+  const toggleSecondOption = () => {
+    setSecondOptionOn((prevState) => !prevState);
+    setFirstOptionOn(false);
+  };
 
   useEffect(() => {
-    // 특정 영역 외 클릭 시 발생하는 이벤트
     function handleFocus(e) {
       if (searchRef.current && !searchRef.current.contains(e.target)) {
         setFirstOptionOn(false);
@@ -31,7 +39,6 @@ function SelectSection() {
       }
     }
 
-    // 이벤트 리스너에 handleFocus 함수 등록
     document.addEventListener('mouseup', handleFocus);
     return () => {
       document.removeEventListener('mouseup', handleFocus);
@@ -43,38 +50,24 @@ function SelectSection() {
       <SelectContainer>
         <h1>Select</h1>
         <div style={{ display: 'flex', gap: '10px' }}>
-          <div style={{ position: 'relative' }}>
-            <SelectButton onClick={() => setFirstOptionOn(!firstOptionOn)}>
-              <div>{stackList[firstChosen]}</div>
-              <div>▼</div>
-            </SelectButton>
-            <ModalPortal>
-              {firstOptionOn && (
-                <OverOptionSet ref={searchRef}>
-                  {stackList.map((stack, idx) => (
-                    <Option key={idx} onClick={() => optionClickHandler('first', idx)}>
-                      {stack}
-                    </Option>
-                  ))}
-                </OverOptionSet>
-              )}
-            </ModalPortal>
-          </div>
-          <div style={{ position: 'relative' }}>
-            <SelectButton onClick={() => setSecondOptionOn(!secondOptionOn)}>
-              <div>{stackList[secondChosen]}</div>
-              <div>▼</div>
-            </SelectButton>
-            {secondOptionOn && (
-              <OptionSet ref={searchRef}>
-                {stackList.map((stack, idx) => (
-                  <Option key={idx} onClick={() => optionClickHandler('second', idx)}>
-                    {stack}
-                  </Option>
-                ))}
-              </OptionSet>
-            )}
-          </div>
+          <SelectBox
+            options={stackList}
+            selectedOption={firstChosen}
+            onSelect={(idx) => optionClickHandler('first', idx)}
+            isOpen={firstOptionOn}
+            onToggle={toggleFirstOption}
+            searchRef={searchRef}
+            usePortal={true} // 첫 번째 셀렉트 박스에만 portal 사용
+          />
+          <SelectBox
+            options={stackList}
+            selectedOption={secondChosen}
+            onSelect={(idx) => optionClickHandler('second', idx)}
+            isOpen={secondOptionOn}
+            onToggle={toggleSecondOption}
+            searchRef={searchRef}
+            usePortal={false} // 두 번째 셀렉트 박스에는 portal 미사용
+          />
         </div>
       </SelectContainer>
     </div>
@@ -89,57 +82,4 @@ const SelectContainer = styled.div`
   margin-top: 50px;
 `;
 
-const SelectButton = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0px 28px;
-  border: 1px solid rgb(221, 221, 221);
-  height: 40px;
-  width: 300px;
-  background-color: rgb(255, 255, 255);
-  border-radius: 12px;
-`;
-
-const OverOptionSet = styled.div`
-  border: 1px solid #eee;
-  border-radius: 12px;
-  z-index: 2;
-  background-color: #fff;
-  width: 300px;
-  position: absolute;
-  top: 650px;
-`;
-
-const OptionSet = styled.div`
-  border: 1px solid #eee;
-  border-radius: 12px;
-  z-index: 2;
-  background-color: #fff;
-  width: 300px;
-  position: absolute;
-  top: 50px;
-`;
-
-const Option = styled.div`
-  font-size: 12px;
-  display: flex;
-  align-items: center;
-  padding-left: 12px;
-  height: 40px;
-
-  :hover {
-    background-color: #eee;
-  }
-
-  :first-child {
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
-  }
-
-  :last-child {
-    border-bottom-left-radius: 12px;
-    border-bottom-right-radius: 12px;
-  }
-`;
 export default React.memo(SelectSection);
