@@ -8,20 +8,6 @@ const InputSection = () => {
     price: '0',
   });
 
-  const checkNumberHandler = (e) => {
-    if (
-      (e.keyCode > 47 && e.keyCode < 58) ||
-      e.keyCode === 8 || //backspace
-      e.keyCode === 37 ||
-      e.keyCode === 39 || //방향키 →, ←
-      e.keyCode === 46 //delete키
-    ) {
-      return;
-    } else {
-      e.preventDefault();
-    }
-  };
-
   const addComma = (price) => {
     let returnString = price?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
     return returnString;
@@ -51,12 +37,7 @@ const InputSection = () => {
         </div>
         <div>
           <label>가격</label>
-          <InputBox
-            type="text"
-            onKeyDown={checkNumberHandler}
-            onChange={priceChangeHandler}
-            value={addComma(info.price) || '0'}
-          />
+          <InputBox type="text" onChange={priceChangeHandler} value={addComma(info.price) || '0'} />
         </div>
         <Button type="primary" onClick={() => alert(`{name: ${info.name}, price: ${info.price}}`)}>
           저장
