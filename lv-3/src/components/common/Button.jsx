@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { ReactComponent as ArrowIcon } from '../../images/right-arrow.svg';
 import { ReactComponent as AlertIcon } from '../../images/warning.svg';
 
-const Button = ({ size, type, icon, label, onClick }) => {
+const Button = ({ size, type, children, label, onClick }) => {
   let StyledButton;
   let IconComponent;
 
@@ -11,14 +11,14 @@ const Button = ({ size, type, icon, label, onClick }) => {
   else if (size === 'medium') StyledButton = MediumButton;
   else StyledButton = SmallButton;
 
-  if (icon === 'arrow') IconComponent = ArrowIcon;
-  else if (icon === 'alert') IconComponent = AlertIcon;
+  if (label === 'arrow') IconComponent = ArrowIcon;
+  else if (label === 'alert') IconComponent = AlertIcon;
 
   return (
     <StyledButton $primary={type === 'primary'} $negative={type === 'negative'} onClick={onClick}>
       <ButtonText>
-        {label}
-        {icon && <Icon>{IconComponent && <IconComponent />}</Icon>}
+        {children}
+        {label && <Icon>{IconComponent && <IconComponent />}</Icon>}
       </ButtonText>
     </StyledButton>
   );
