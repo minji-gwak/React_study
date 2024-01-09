@@ -3,7 +3,7 @@ import InputContainer from './features/InputSection';
 import ModalContainer from './features/ModalSection';
 import SelectContainer from './features/SelectSection';
 
-function App() {
+const App = () => {
   return (
     <>
       <ButtonContainer />
@@ -12,6 +12,6 @@ function App() {
       <SelectContainer />
     </>
   );
-}
+};
 
 export default App;

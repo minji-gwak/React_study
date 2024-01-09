@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import ModalPortal from '../portal/Portal';
 
-export default function SelectBox({
+const SelectBox = ({
   options,
   selectedOption,
   onSelect,
@@ -10,7 +10,7 @@ export default function SelectBox({
   onToggle,
   searchRef,
   usePortal = true, // portal 사용 여부 추가
-}) {
+}) => {
   return (
     <div style={{ position: 'relative' }}>
       <SelectButton onClick={onToggle}>
@@ -42,7 +42,7 @@ export default function SelectBox({
         )}
     </div>
   );
-}
+};
 
 const SelectButton = styled.button`
   display: flex;
@@ -97,3 +97,5 @@ const Option = styled.div`
     border-bottom-right-radius: 12px;
   }
 `;
+
+export default React.memo(SelectBox);

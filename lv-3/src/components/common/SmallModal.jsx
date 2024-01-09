@@ -2,7 +2,7 @@ import React from 'react';
 import { ModalBackground } from '../../styles/CommonStyles';
 import styled from 'styled-components';
 
-function SmallModal({ onClose }) {
+const SmallModal = ({ onClose }) => {
   return (
     <div>
       <ModalBackground onClick={onClose} />
@@ -18,7 +18,7 @@ function SmallModal({ onClose }) {
       </ModalContainer>
     </div>
   );
-}
+};
 
 const ModalContainer = styled.div`
   left: 50%;

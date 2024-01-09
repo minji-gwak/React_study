@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Button from '../components/common/Button';
 
-function ButtonSection() {
+const ButtonSection = () => {
   return (
     <InputContainer>
       <h1>Button</h1>
@@ -30,7 +30,7 @@ function ButtonSection() {
       </BoxContainer>
     </InputContainer>
   );
-}
+};
 
 const InputContainer = styled.div`
   display: flex;

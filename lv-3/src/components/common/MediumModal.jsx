@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { ModalBackground } from '../../styles/CommonStyles';
 import Button from '../common/Button';
 
-function MediumModal({ onClose }) {
+const MediumModal = ({ onClose }) => {
   return (
     <div>
       <ModalBackground />
@@ -16,7 +16,7 @@ function MediumModal({ onClose }) {
       </ModalContainer>
     </div>
   );
-}
+};
 
 const ModalContainer = styled.div`
   left: 50%;

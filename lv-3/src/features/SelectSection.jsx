@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import SelectBox from '../components/common/SelextBox';
 
-function SelectSection() {
+const SelectSection = () => {
   const stackList = ['리액트', '자바', '스프링', '리액트네이티브'];
   const [firstChosen, setFirstChosen] = useState(0);
   const [secondChosen, setSecondChosen] = useState(0);
@@ -32,12 +32,12 @@ function SelectSection() {
   };
 
   useEffect(() => {
-    function handleFocus(e) {
+    const handleFocus = (e) => {
       if (searchRef.current && !searchRef.current.contains(e.target)) {
         setFirstOptionOn(false);
         setSecondOptionOn(false);
       }
-    }
+    };
 
     document.addEventListener('mouseup', handleFocus);
     return () => {
@@ -72,7 +72,7 @@ function SelectSection() {
       </SelectContainer>
     </div>
   );
-}
+};
 
 const SelectContainer = styled.div`
   border: 3px solid rgb(221, 221, 221);

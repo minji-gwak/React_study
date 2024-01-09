@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import Button from '../components/common/Button';
 
-function InputSection() {
+const InputSection = () => {
   const [info, setInfo] = useState({
     name: '',
     price: '0',
@@ -62,7 +62,7 @@ function InputSection() {
       </InputBoxContainer>
     </>
   );
-}
+};
 
 const InputBoxContainer = styled.div`
   display: flex;

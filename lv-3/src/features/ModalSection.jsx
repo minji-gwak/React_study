@@ -5,7 +5,7 @@ import MediumModal from '../components/common/MediumModal';
 import SmallModal from '../components/common/SmallModal';
 import Button from '../components/common/Button';
 
-function ModalSection() {
+const ModalSection = () => {
   const [smModalOn, setSmModalOn] = useState(false);
   const [mdModalOn, setMdModalOn] = useState(false);
   const mdModalHandler = () => setMdModalOn(!mdModalOn);
@@ -22,6 +22,6 @@ function ModalSection() {
       </BoxContainer>
     </>
   );
-}
+};
 
 export default React.memo(ModalSection);

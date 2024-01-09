@@ -81,4 +81,4 @@ const ButtonText = styled.div`
   gap: 7px;
 `;
 
-export default Button;
+export default React.memo(Button);
