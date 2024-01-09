@@ -8,11 +8,6 @@ const InputSection = () => {
     price: '0',
   });
 
-  const addComma = (price) => {
-    let returnString = price?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-    return returnString;
-  };
-
   const nameChangeHandler = (e) => setInfo({ name: e.target.value, price: info.price });
 
   const priceChangeHandler = (e) => {
@@ -37,7 +32,7 @@ const InputSection = () => {
         </div>
         <div>
           <label>가격</label>
-          <InputBox type="text" onChange={priceChangeHandler} value={addComma(info.price) || '0'} />
+          <InputBox type="text" onChange={priceChangeHandler} value={Number(info.price).toLocaleString('en') || '0'} />
         </div>
         <Button type="primary" onClick={() => alert(`{name: ${info.name}, price: ${info.price}}`)}>
           저장
