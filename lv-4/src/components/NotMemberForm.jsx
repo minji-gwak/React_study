@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import Input from './Input';
+import { Button } from './Button';
 
 const NotMemberForm = ({ type }) => {
   const navigate = useNavigate();
@@ -49,19 +50,6 @@ const Title = styled.h1`
   letter-spacing: 3px;
   font-weight: bolder;
   margin-bottom: 50px;
-`;
-
-const Button = styled.button`
-  width: 100%;
-  margin-top: 40px;
-  padding: 13px 15px;
-  background-color: #ff0558;
-  color: white;
-  border: none;
-  border-radius: 10px;
-  &:hover {
-    opacity: 70%;
-  }
 `;
 
 const PageChangeBox = styled.div`

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
-const Input = ({ type, placeholder, children, maxlength }) => {
+const Input = ({ type, placeholder, children, maxLength, onChange, value }) => {
   let InputType;
   if (type === 'textarea') InputType = MultipleInput;
   else InputType = OneLineInput;
@@ -10,8 +10,12 @@ const Input = ({ type, placeholder, children, maxlength }) => {
     <>
       <InputBox>
         <label>{children}</label>
-        {type === 'textarea' && <InputType rows="10" maxlength={maxlength} placeholder={placeholder}></InputType>}
-        {type !== 'textarea' && <InputType type={type} placeholder={placeholder}></InputType>}
+        {type === 'textarea' && (
+          <InputType rows="10" maxLength={maxLength} placeholder={placeholder} onChange={onChange} value={value} />
+        )}
+        {type !== 'textarea' && (
+          <InputType type={type} maxLength={maxLength} placeholder={placeholder} onChange={onChange} value={value} />
+        )}
       </InputBox>
     </>
   );
