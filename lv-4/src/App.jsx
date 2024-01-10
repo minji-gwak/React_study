@@ -2,7 +2,7 @@ import Router from './shared/Router';
 import styled from 'styled-components';
 import { GlobalStyle } from './styles/Common';
 
-function App() {
+const App = () => {
   return (
     <>
       <GlobalStyle />
@@ -13,7 +13,7 @@ function App() {
       </Layout>
     </>
   );
-}
+};
 
 const Layout = styled.div`
   background-color: rgb(240, 240, 240);

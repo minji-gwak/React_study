@@ -1,0 +1,30 @@
+{
+  "todos": [
+    {
+      "id": 1,
+      "writer": "글쓴이",
+      "title": "오늘 어떤가요?",
+      "content": "행복합니다."
+    },
+    {
+      "id": 2,
+      "writer": "민지",
+      "title": "행복 호소인",
+      "content": "이젠 좀 돼라;;"
+    },
+    {
+      "id": 3,
+      "writer": "곽민지",
+      "title": "추가해봄",
+      "content": "이제 된다"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "writer": "댓쓴이",
+      "text": "다행이네요.",
+      "postId": 1
+    }
+  ]
+}
