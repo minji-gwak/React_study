@@ -17,7 +17,7 @@ api.interceptors.request.use(
 
 api.interceptors.response.use(
   function (response) {
-    console.log('인터넵트 응답 받았어요!');
+    console.log('인터셉트 응답 받았어요!');
     // 정상 응답
     return response;
   },

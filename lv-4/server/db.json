@@ -1,30 +1,23 @@
 {
-  "todos": [
+  "user": [
     {
-      "id": 1,
-      "writer": "글쓴이",
-      "title": "오늘 어떤가요?",
-      "content": "행복합니다."
+      "id": "2bcd",
+      "userId": "mini0006",
+      "password": "alswl6960!"
     },
     {
-      "id": 2,
-      "writer": "민지",
-      "title": "행복 호소인",
-      "content": "이젠 좀 돼라;;"
-    },
-    {
-      "id": 3,
-      "writer": "곽민지",
-      "title": "추가해봄",
-      "content": "이제 된다"
+      "id": "9110",
+      "userId": "hello",
+      "password": "hello"
     }
   ],
-  "comments": [
+  "todos": [
     {
-      "id": 1,
-      "writer": "댓쓴이",
-      "text": "다행이네요.",
-      "postId": 1
+      "id": "119f",
+      "writer": "민지",
+      "title": "행복 호소인의 글",
+      "content": "이제 그만 행복하자 !!"
     }
-  ]
+  ],
+  "comments": []
 }

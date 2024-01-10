@@ -1,26 +1,56 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import api from '../axios/api';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
+import useInput from '../hooks/useInput';
 import Input from './Input';
-import { Button } from './Button';
+import Button from './Button';
 
 const NotMemberForm = ({ type }) => {
   const navigate = useNavigate();
+
+  const [userId, userIdChangeHandler, userIdClearHandler] = useInput();
+  const [password, passwordChangeHandler, passwordClearHandler] = useInput();
+
   const task = type === 'login' ? '로그인' : '회원가입';
-  const loginHandler = () => {
-    navigate('/');
+
+  const loginHandler = async () => {
+    if (!userId.length || !password.length) {
+      alert('아이디와 비밀번호를 모두 입력해주세요.');
+      return;
+    }
+
+    userIdClearHandler();
+    passwordClearHandler();
+    return navigate('/');
   };
+
   const signupHandler = () => {
-    navigate('/login');
+    if (!userId.length || !password.length) {
+      alert('아이디와 비밀번호를 모두 입력해주세요.');
+      return;
+    }
+
+    const body = {
+      userId: userId,
+      password: password,
+    };
+
+    api.post('user', body).then((res) => {
+      userIdClearHandler();
+      passwordClearHandler();
+      navigate('/login');
+    });
   };
+
   return (
     <>
       <FormBox>
         <Title>{task}</Title>
-        <Input type="text" placeholder="아이디를 입력해주세요.">
+        <Input type="text" onChange={userIdChangeHandler} value={userId} placeholder="아이디를 입력해주세요.">
           아이디
         </Input>
-        <Input type="password" placeholder="비밀번호를 입력해주세요.">
+        <Input type="password" onChange={passwordChangeHandler} value={password} placeholder="비밀번호를 입력해주세요.">
           비밀번호
         </Input>
         <Button onClick={() => (type === 'login' ? loginHandler() : signupHandler())}>{task}</Button>

@@ -1,9 +1,9 @@
 import React from 'react';
-import { Container } from '../styles/Common';
-import Input from '../components/Input';
-import useInput from '../hooks/useInput';
-import { Button } from '../components/Button';
 import api from '../axios/api';
+import useInput from '../hooks/useInput';
+import Input from '../components/Input';
+import Button from '../components/Button';
+import { Container } from '../styles/Common';
 
 const AddTodo = () => {
   const [writer, writerChangeHandler, writeClearrHandler] = useInput();
@@ -11,7 +11,7 @@ const AddTodo = () => {
   const [content, contentChangeHandler, contentClearrHandler] = useInput();
 
   const submitHandler = async () => {
-    await api.post('todos', { id: 2, writer: writer, title: title, content: content });
+    await api.post('todos', { writer: writer, title: title, content: content });
     writeClearrHandler();
     titleClearrHandler();
     contentClearrHandler();
