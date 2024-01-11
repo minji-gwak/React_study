@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Loading from '../components/Loading';
 import { __getTodos } from '../redux/modules/todoSlice';
+import AuthCheckHOC from '../HOC/AuthCheckHOC';
+import Loading from '../components/Loading';
 
 const TodoList = () => {
   const dispatch = useDispatch();
@@ -27,4 +28,4 @@ const TodoList = () => {
   );
 };
 
-export default TodoList;
+export default React.memo(AuthCheckHOC(TodoList));

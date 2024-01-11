@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { ReactComponent as ArrowIcon } from '../images/right-arrow.svg';
 import { useNavigate } from 'react-router-dom';
 import { Container } from '../styles/Common';
+import AuthCheckHOC from '../HOC/AuthCheckHOC';
 
 const Catalogue = ({ children, to }) => {
   const navigate = useNavigate();
@@ -54,4 +55,4 @@ const List = styled.div`
   }
 `;
 
-export default React.memo(Home);
+export default React.memo(AuthCheckHOC(Home));

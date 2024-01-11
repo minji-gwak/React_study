@@ -1,6 +1,7 @@
 import React from 'react';
 import api from '../axios/api';
 import useInput from '../hooks/useInput';
+import AuthCheckHOC from '../HOC/AuthCheckHOC';
 import Input from '../components/Input';
 import Button from '../components/Button';
 import { Container } from '../styles/Common';
@@ -51,4 +52,4 @@ const AddTodo = () => {
   );
 };
 
-export default React.memo(AddTodo);
+export default React.memo(AuthCheckHOC(AddTodo));

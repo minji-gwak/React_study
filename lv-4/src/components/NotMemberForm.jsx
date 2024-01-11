@@ -1,53 +1,68 @@
 import React from 'react';
-import api from '../axios/api';
+import userApi from '../axios/userApi';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import useInput from '../hooks/useInput';
 import Input from './Input';
 import Button from './Button';
+import { SHA256 } from 'crypto-js';
+import { setCookie } from '../storage/cookie';
 
 const NotMemberForm = ({ type }) => {
   const navigate = useNavigate();
 
-  const [userId, userIdChangeHandler, userIdClearHandler] = useInput();
+  const [id, idChangeHandler, idClearHandler] = useInput();
   const [password, passwordChangeHandler, passwordClearHandler] = useInput();
 
   const task = type === 'login' ? '로그인' : '회원가입';
 
-  const loginHandler = async () => {
-    if (!userId.length || !password.length) {
-      alert('아이디와 비밀번호를 모두 입력해주세요.');
-      return;
-    }
-
-    userIdClearHandler();
-    passwordClearHandler();
-    return navigate('/');
-  };
-
-  const signupHandler = () => {
-    if (!userId.length || !password.length) {
+  const signupHandler = async () => {
+    if (!id.length || !password.length) {
       alert('아이디와 비밀번호를 모두 입력해주세요.');
       return;
     }
 
     const body = {
-      userId: userId,
-      password: password,
+      id,
+      password: SHA256(password).toString(),
     };
 
-    api.post('user', body).then((res) => {
-      userIdClearHandler();
+    await userApi.post('register', body).then(() => {
+      idClearHandler();
       passwordClearHandler();
       navigate('/login');
     });
+  };
+
+  const loginHandler = async () => {
+    if (!id.length || !password.length) {
+      alert('아이디와 비밀번호를 모두 입력해주세요.');
+      return;
+    }
+
+    const body = {
+      id,
+      password: SHA256(password).toString(),
+    };
+
+    await userApi.post('login', body).then((response) => {
+      setCookie('token', response.data.token, {
+        path: '/',
+        sameSite: 'strict',
+      });
+      navigate('/login');
+    });
+
+    idClearHandler();
+    passwordClearHandler();
+    return navigate('/');
   };
 
   return (
     <>
       <FormBox>
         <Title>{task}</Title>
-        <Input type="text" onChange={userIdChangeHandler} value={userId} placeholder="아이디를 입력해주세요.">
+        <Input type="text" onChange={idChangeHandler} value={id} placeholder="아이디를 입력해주세요.">
           아이디
         </Input>
         <Input type="password" onChange={passwordChangeHandler} value={password} placeholder="비밀번호를 입력해주세요.">

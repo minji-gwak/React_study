@@ -2,12 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { ReactComponent as HomeIcon } from '../images/home.svg';
+import { removeCookie } from '../storage/cookie';
 
 const NavBar = () => {
   const navigate = useNavigate();
   const locationNow = useLocation();
 
   const logoutHandler = () => {
+    removeCookie('token');
     navigate('/login');
   };
 
