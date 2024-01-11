@@ -10,6 +10,7 @@ const NavBar = () => {
 
   const logoutHandler = () => {
     removeCookie('token');
+    alert('로그아웃 됐습니다.');
     navigate('/login');
   };
 

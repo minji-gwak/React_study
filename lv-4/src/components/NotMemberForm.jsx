@@ -27,11 +27,16 @@ const NotMemberForm = ({ type }) => {
       password: SHA256(password).toString(),
     };
 
-    await userApi.post('register', body).then(() => {
-      idClearHandler();
-      passwordClearHandler();
-      navigate('/login');
-    });
+    await userApi
+      .post('register', body)
+      .then(() => {
+        idClearHandler();
+        passwordClearHandler();
+        navigate('/login');
+      })
+      .catch((error) => {
+        alert(error.response.data.message);
+      });
   };
 
   const loginHandler = async () => {
@@ -45,17 +50,20 @@ const NotMemberForm = ({ type }) => {
       password: SHA256(password).toString(),
     };
 
-    await userApi.post('login', body).then((response) => {
-      setCookie('token', response.data.token, {
-        path: '/',
-        sameSite: 'strict',
+    await userApi
+      .post('login', body)
+      .then((response) => {
+        setCookie('token', response.data.token, {
+          path: '/',
+          sameSite: 'strict',
+        });
+        idClearHandler();
+        passwordClearHandler();
+        return navigate('/');
+      })
+      .catch((error) => {
+        alert(error.response.data.message);
       });
-      navigate('/login');
-    });
-
-    idClearHandler();
-    passwordClearHandler();
-    return navigate('/');
   };
 
   return (
